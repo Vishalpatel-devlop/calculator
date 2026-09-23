@@ -1,0 +1,367 @@
+<!document html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+    /* Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+    body {
+        background-color: gray;
+        margin-left: 200px;
+        font-family: 'Roboto', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    #main-of-main {
+        width: 360px;
+        background-color: #1e1e1e;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+    }
+
+    #border {
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        border-bottom: 1px solid #333;
+    }
+
+    #main-input{
+        width: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        color: white;
+        text-align: right;
+    }
+
+    #main-input {
+        font-size: 32px;
+        font-weight: 500;
+        height: 45px;
+        margin-bottom: 5px;
+    }
+
+  
+    #functions {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        align-items: center;
+        padding: 10px 15px;
+        border-top: 1px solid #333;
+        border-bottom: 1px solid #333;
+        background-color: #1a1a1a;
+        color: #00bcd4;
+        font-size: 20px;
+    }
+
+    #functions div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
+    #functions div:hover {
+        color: #03e9f4;
+    }
+
+    #numbers {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: #1e1e1e;
+    }
+
+    .sub-num {
+        background-color: #2a2a2a;
+        color: #00bcd4;
+        font-size: 20px;
+        border-radius: 50%;
+        height: 65px;
+        width: 65px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+        margin: auto;
+    }
+
+    .sub-num:hover {
+        background-color: #333;
+    }
+
+    .sub-num:active {
+        transform: scale(0.7);
+    }
+
+    #clear-button {
+        background-color: #ff3b3b;
+        color: white;
+    }
+
+    #equal-button {
+        background-color: #00bcd4;
+        color: white;
+    }
+
+    #equal-button:hover {
+        background-color: #03c9f9;
+    }
+
+    #clear-button:hover {
+        background-color: #ff5c5c;
+    }
+
+    .material-symbols-outlined {
+        font-size: 24px;
+    }
+
+    /* Responsive behavior (optional) */
+    @media screen and (max-width: 400px) {
+        #main-of-main {
+            width: 90%;
+        }
+
+        .sub-num {
+            height: 55px;
+            width: 55px;
+            font-size: 18px;
+        }
+    }
+    </style>
+    </head>
+    <body>
+        <div id="main-of-main">
+        <div id="border">
+    
+     <input type="text" id="main-input">
+     
+    </div>
+        <div id="functions">
+            <div id="history-container" style="display:none;">
+  <div id="history-title">History</div>
+  <ul id="history-list"></ul>
+</div>
+
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div><span class="material-symbols-outlined" id="back-button" onclick="back1()">
+chevron_left
+</span></div>
+        
+        </div>
+        <div id="numbers">
+            
+        <div id="clear-button" class="sub-num" onclick="clearing()">C</div>
+            
+            <span class="sub-num" onclick="sq()" id="bracket1">x²</span>
+        <div class="sub-num" onclick="sqroot()">√</div>
+        <div id="divide-button" class="sub-num" onclick="divide()">÷</div>
+        <div class="sub-num" onclick="seven()">7</div>
+        <div class="sub-num" onclick="eight()">8</div>
+        <div class="sub-num" onclick="nine()">9</div>
+        <div class="sub-num" onclick="multiply()"><span class="material-symbols-outlined">
+close
+</span> </div>
+        <div class="sub-num" onclick="four()">4</div>
+        <div class="sub-num" onclick="five()">5</div>
+        <div class="sub-num" onclick="six()">6</div>
+        <div class="sub-num" onclick="minus()">-</div>
+        <div class="sub-num" onclick="one()">1</div>
+        <div class="sub-num" onclick="two()">2</div>
+        <div class="sub-num" onclick="three()">3</div>
+        <div class="sub-num" onclick="plus()">+</div>
+        <div class="sub-num" onclick="pandm()">00</div>
+        <div class="sub-num" onclick="zero()">0</div>
+        <div class="sub-num" onclick="dot()">.</div>
+        <div id="equal-button" class="sub-num" onclick="equal()">=</div>
+        
+        
+        </div>
+        </div>
+        <!--<div id="more-fun">
+        <div class="more-fun-class" id="fun-1" onclick="fun1()"></div>
+        <div class="more-fun-class" id="fun-2" onclick="fun2()"></div>
+        <div class="more-fun-class" id="fun-3" onclick="fun3()"></div>
+        <div class="more-fun-class" id="fun-4" onclick="fun4()"></div>
+        <div class="more-fun-class" id="fun-5" onclick="fun5()"></div>
+        <div class="more-fun-class" id="fun-6" onclick="fun6()"></div>
+        <div class="more-fun-class" id="fun-7" onclick="fun7()"></div>
+        <div class="more-fun-class" id="fun-8" onclick="fun8()"></div>
+        <div class="more-fun-class" id="fun-9" onclick="fun9()"></div>
+        <div class="more-fun-class" id="fun-10" onclick="fun10()"></div>
+        <div class="more-fun-class" id="fun-11" onclick="fun11()"></div>
+        <div class="more-fun-class" id="fun-12" onclick="fun12()"></div>
+        
+        </div>-->
+    <script>
+        window.onload = function () {
+           var x = document.getElementById("main-input").value;
+              document.getElementById("sub-input").value = x;
+              }
+
+        
+        function sq()
+        {
+          
+            var f=document.getElementById("main-input").value;
+            var result=f*f;
+           document.getElementById("main-input").value=result;
+            /*document.getElementById("sub-input").value = `${f}² = ${result}`;*/
+              
+        }
+        function sqroot()
+        { 
+             var f=document.getElementById("main-input").value;
+           var round=Math.sqrt(f); 
+            
+            document.getElementById("main-input").value=round; 
+            
+          
+        }
+        function divide()
+        {
+            
+          document.getElementById("main-input").value+="/"
+            
+        }
+        function seven()
+        {
+          document.getElementById("main-input").value+="7"
+             
+        }
+        function eight()
+        {
+          document.getElementById("main-input").value+="8"
+             
+        }
+        function nine()
+        {
+          document.getElementById("main-input").value+="9"
+             
+        }
+        function multiply()
+        {
+          document.getElementById("main-input").value+="*"
+             
+        }
+        function four()
+        {
+          document.getElementById("main-input").value+="4"
+             
+        }
+        function five()
+        {
+          document.getElementById("main-input").value+="5"
+             
+        }
+        function six()
+        {
+          document.getElementById("main-input").value+="6"
+             
+        }
+        function minus()
+        {
+          document.getElementById("main-input").value+="-"
+             
+        }
+        function one()
+        {
+          document.getElementById("main-input").value+="1"
+             
+        }
+        function two()
+        {
+          document.getElementById("main-input").value+="2"
+             
+        }
+        function three()
+        {
+          document.getElementById("main-input").value+="3"
+             
+        }
+        function plus()
+        {
+          document.getElementById("main-input").value+="+"
+             
+        }
+        function pandm()
+        {
+          document.getElementById("main-input").value+="00"
+             
+        }
+        function zero()
+        {
+          document.getElementById("main-input").value+="0"
+             
+        }
+        function dot()
+        {
+          document.getElementById("main-input").value+="."
+             
+        }
+        function equal()
+        {
+            var eq=document.getElementById("main-input").value;
+           
+          document.getElementById("main-input").value=eval(eq);
+            }
+            
+          /*  var e=document.getElementById("main-input").value;
+            
+           var round=Math.round(e);
+            
+            document.getElementById("main-input").value=round;*/
+            
+             
+        
+        function num()
+        {
+           
+        }
+        function clearing()
+        {
+            
+           document.getElementById("main-input").value="";
+            
+        }
+        function back1()
+        {
+            var ba=document.getElementById("main-input").value;
+            if(ba.length==1)
+                {
+                  document.getElementById("main-input").value=null;
+                }
+            else{
+                
+                document.getElementById("main-input").value=ba.slice(0,ba.length-1);
+                
+            }
+        }
+       function fun1()
+        {
+            var f1=document.getElementById("main-input").value;
+            var sin=Math.sin(f1);
+            document.getElementById("main-input").value=sin;
+        }
+       
+        
+       
+        </script>
+    
+    </body>
+
+</html>
